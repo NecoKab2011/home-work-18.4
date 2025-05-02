@@ -2,18 +2,23 @@
   "name": "home-work-18.4",
   "version": "1.0.0",
   "description": "",
-
+  "homepage": "https://necokab2011.github.io/home-work-18.4/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx parcel src/index.html",
     "build": "parcel build src/index.html --public-url ./",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "server": "npx json-server students.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "parcel": "^2.14.4"
+  },
+  "dependencies": {
+    "gh-pages": "^6.3.0",
+    "json-server": "^1.0.0-beta.3"
   }
 }
