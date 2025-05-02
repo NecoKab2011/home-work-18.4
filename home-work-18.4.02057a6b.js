@@ -1,0 +1,14 @@
+const e="http://localhost:3000/students",t=document.querySelector("#get-students-btn"),l=document.querySelector("#students-table tbody"),n=document.querySelector("#add-student-form"),a=document.querySelector("#update-modal"),d=document.querySelector("#update-student-form");let u=null;async function o(){try{var t;let n=await fetch(e);t=await n.json(),l.innerHTML="",t.forEach(e=>{let t=document.createElement("tr");t.innerHTML=`
+      <td>${e.id}</td>
+      <td>${e.name}</td>
+      <td>${e.age}</td>
+      <td>${e.course}</td>
+      <td>${e.skills.join(", ")}</td>
+      <td>${e.email}</td>
+      <td>${e.isEnrolled?"Записаний":"Не записаний"}</td>
+      <td>
+        <button class="update-btn" data-id="${e.id}">\u{41E}\u{43D}\u{43E}\u{432}\u{438}\u{442}\u{438}</button>
+        <button class="delete-btn" data-id="${e.id}">\u{412}\u{438}\u{434}\u{430}\u{43B}\u{438}\u{442}\u{438}</button>
+      </td>
+    `,l.appendChild(t)}),document.querySelectorAll(".update-btn").forEach(t=>{t.addEventListener("click",()=>{var l;u=l=t.dataset.id,fetch(`${e}/${l}`).then(e=>e.json()).then(e=>{a.style.display="block",d.elements["update-name"].value=e.name,d.elements["update-age"].value=e.age,d.elements["update-course"].value=e.course,d.elements["update-skills"].value=e.skills.join(", "),d.elements["update-email"].value=e.email,d.elements["update-isEnrolled"].checked=e.isEnrolled})})}),document.querySelectorAll(".delete-btn").forEach(e=>{e.addEventListener("click",()=>r(e.dataset.id))})}catch(e){console.log(e)}}async function s(t){t.preventDefault();let l={name:document.querySelector("#name").value,age:parseInt(document.querySelector("#age").value),course:document.querySelector("#course").value,skills:document.querySelector("#skills").value.split(",").map(e=>e.trim()),email:document.querySelector("#email").value,isEnrolled:document.querySelector("#isEnrolled").checked};try{await fetch(e,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(l)}),o(),t.target.reset()}catch(e){console.log(e)}}async function c(t){t.preventDefault();let l={name:d.elements["update-name"].value,age:parseInt(d.elements["update-age"].value),course:d.elements["update-course"].value,skills:d.elements["update-skills"].value.split(",").map(e=>e.trim()),email:d.elements["update-email"].value,isEnrolled:d.elements["update-isEnrolled"].checked};try{await fetch(`${e}/${u}`,{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify(l)}),a.style.display="none",o()}catch(e){console.log(e)}}async function r(t){if(window.confirm("Ви впевнені, що хочете видалити цього студента?"))try{await fetch(`${e}/${t}`,{method:"DELETE"}),o()}catch(e){console.log(e)}}t.addEventListener("click",o),n.addEventListener("submit",s),d.addEventListener("submit",c),a.addEventListener("click",e=>{e.target===a&&(a.style.display="none")});
+//# sourceMappingURL=home-work-18.4.02057a6b.js.map
