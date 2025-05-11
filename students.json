@@ -83,9 +83,24 @@
       "age": 10,
       "course": "Goit",
       "skills": [
-        "шахи"
+        "HTML",
+        "CSS",
+        "Java"
       ],
       "email": "danielo10@gmail.com",
+      "isEnrolled": false
+    },
+    {
+      "id": "9343",
+      "name": "Даніело",
+      "age": 45,
+      "course": "goit",
+      "skills": [
+        "HTML",
+        "CSS",
+        "Java"
+      ],
+      "email": "daniel0@gmail.com",
       "isEnrolled": false
     }
   ]
